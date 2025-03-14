@@ -1,0 +1,126 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: linear-gradient(45deg, rgb(0, 0, 0), rgb(18, 6, 131));
+    height: 100vh;
+    width: auto;
+    
+}
+
+.board {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    grid-template-columns: repeat(3, auto);
+}
+
+
+    /* Célula */
+
+.cell {
+    width: 100px;
+    height: 100px;
+    border: 2px solid white;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+}
+
+.cell.x , .cell.circle {
+    cursor: not-allowed;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(2),
+.cell:nth-child(3) {
+    border-top: none;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(4),
+.cell:nth-child(7) {
+    border-left: none;
+}
+
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:nth-child(9) {
+    border-bottom: none;
+}
+
+.cell:nth-child(3),
+.cell:nth-child(8),
+.cell:nth-child(9) {
+    border-bottom: none;
+}
+
+.cell:nth-child(3),
+.cell:nth-child(6),
+.cell:nth-child(9) {
+    border-right: none;
+}
+
+/* X */
+
+
+
+.cell.x::before,
+.cell.x::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    height: 15%;
+    background-color: white;
+    transform-origin: center;
+}
+
+.cell.x::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.cell.x::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
+/* Círculo */
+
+.cell.circle::before,
+.cell.circle::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    height: 15%;
+    background-color: white;
+    transform-origin: center;
+    border-radius: 50%;
+    height: calc(100px *0.8);
+    width: calc(100px *0.8);
+}
+
+.cell.circle::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.cell.circle::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
+
+.winning-message {
+    display: none;
+}
