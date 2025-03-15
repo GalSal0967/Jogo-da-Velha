@@ -14,11 +14,10 @@ body {
 h1 {
     text-align: center;
     color: aliceblue;
-    font-family: sans-serif;
     position: absolute ;
-    left: 35%;
+    left: 32%;
     margin-top: 100px;
-    font-size: 35px;
+    font-size: 50px;
 }
 
 
@@ -33,6 +32,9 @@ h1 {
     justify-items: center;
     grid-template-columns: repeat(3, auto);
 }
+
+
+
 
 
     /* Célula */
@@ -86,7 +88,10 @@ h1 {
 
 
 .cell.x::before,
-.cell.x::after {
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::after, 
+.board.x .cell:not(.x):not(.circle):hover::before 
+{
     content: "";
     position: absolute;
     top: 50%;
@@ -97,42 +102,97 @@ h1 {
     transform-origin: center;
 }
 
-.cell.x::before {
+
+
+.cell.x::before , 
+.board.x .cell:hover::before
+{
     transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.cell.x::after {
+.cell.x::after ,
+.board.x .cell:hover::after
+{
     transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 
 /* Círculo */
 
-.cell.circle::before,
-.cell.circle::after {
+.cell.circle::before, 
+.board.circle .cell:not(.x):not(.circle):hover::before 
+{
     content: "";
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 90%;
-    height: 15%;
+    width: calc(100px * 0.7);
+    height: calc(100px * 0.7);
     background-color: white;
-    transform-origin: center;
     border-radius: 50%;
-    height: calc(100px *0.7);
-    width: calc(100px *0.7);
+    transform: translate(-50%, -50%);
 }
 
-.cell.circle::before {
+
+
+.cell.circle::before ,
+.board.circle .cell:hover::before
+{
     transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.cell.circle::after {
-    transform: translate(-50%, -50%) rotate(-45deg);
+
+
+/* Transparencia dos simbolos com o hover  X */
+
+.board.x .cell:not(.x):not(.circle):hover::after, 
+.board.x .cell:not(.x):not(.circle):hover::before {
+    background-color: rgba(255, 255, 255, 0.5);
 }
+
+/* Transparencia do hover Circle */
+
+.board.circle .cell:not(.x):not(.circle):hover::before {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+
 
 
 
 .winning-message {
     display: none;
+    left: 0;
+    right: 0;
+    top: 0;
+    position: fixed;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: rgb(255, 255, 255);
+    font-size: 85px;
+
+    flex-direction: column;   /*  Esse codigo faz os itens ficarem alinhados em colunas*/
+
+    
+}
+
+.botao {
+    padding: 15px;
+    font-size: 20px;
+    background-color: rgb(163, 170, 255);
+    font-weight: bold;
+    cursor: pointer;    /* Adiciona o cursor */
+    border-radius: 10px;
+    border: none;   /* Tira a borda */
+    color: rgb(255, 255, 255);
+}
+
+.botao:hover {
+    background-color: rgba(163, 170, 255, 0.9);
+}
+
+.winning-message p {
+    padding: 25px;
 }
