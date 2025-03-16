@@ -14,7 +14,7 @@
         
         <h1>Jogo da velha</h1>
 
-        <div class="board x">
+        <div class="board" data-board>
             <div class="cell" data-cell ></div>
             <div class="cell" data-cell ></div>        <!-- Outro atalho: Criar mais de uma div igual ao mesmo tempo: .nomedadiv *numero de vezes-->
             <div class="cell" data-cell ></div>        
@@ -27,8 +27,8 @@
         </div>
 
         <div class="winning-message" data-winning-message>
-            <p>X Venceu!</p>
-            <button class = "botao">Reiniciar</button>
+            <p data-winning-message-text>X Venceu!</p>
+            <button class = data-restart-button >Reiniciar</button>
         </div>
 
     <script src="_js/script.js"></script>
